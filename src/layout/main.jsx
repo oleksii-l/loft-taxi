@@ -5,8 +5,8 @@ import Map from "../components/map";
 import Profile from "../components/profile";
 
 const SECTIONS = {
-  map: <Map />,
-  profile: <Profile />,
+  map: Map,
+  profile: Profile,
 };
 
 export default class Main extends Component {
@@ -17,10 +17,11 @@ export default class Main extends Component {
   }
 
   render() {
+    const Section = SECTIONS[this.state.currentPage];
     return (
       <>
         <Header navigateTo={this.props.navigateTo} setSection={this.setSection} />
-        {SECTIONS[this.state.currentPage]}
+        <Section />
       </>
     );
   }
