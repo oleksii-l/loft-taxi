@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import '../css/header.css';
+import PropTypes from 'prop-types';
 
 export default class Header extends Component {
     render() {
@@ -16,4 +17,9 @@ export default class Header extends Component {
         </div>
     }
 
+}
+
+Header.propTypes = {
+    navigateTo: PropTypes.func.isRequired,
+    setSection: PropTypes.func.isRequired
 }

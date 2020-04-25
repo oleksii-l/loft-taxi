@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../css/login.css";
 import LoginForm from "../components/loginForm";
 import Registration from "../components/registration";
+import PropTypes from 'prop-types';
 
 export default class Login extends Component {
   state = { currentPage: "login" };
@@ -19,4 +20,8 @@ export default class Login extends Component {
     console.log(this.props);
     return <div className='login'>{this.SECTIONS[this.state.currentPage]}</div>;
   }
+}
+
+LoginForm.propTypes = {
+  navigateTo: PropTypes.func
 }

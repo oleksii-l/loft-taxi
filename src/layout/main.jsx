@@ -3,6 +3,7 @@ import "../css/main.css";
 import Header from "../components/header";
 import Map from "../components/map";
 import Profile from "../components/profile";
+import PropTypes from 'prop-types';
 
 const SECTIONS = {
   map: Map,
@@ -25,4 +26,8 @@ export default class Main extends Component {
       </>
     );
   }
+}
+
+Main.propTypes = {
+  navigateTo: PropTypes.func
 }

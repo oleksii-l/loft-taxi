@@ -1,5 +1,6 @@
 import React from 'react';
 import "../css/loginform.css";
+import PropTypes from 'prop-types';
 
 export default function LoginForm(props) {
   console.log(props)
@@ -24,4 +25,9 @@ export default function LoginForm(props) {
       />
     </form>
   );
+}
+
+LoginForm.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+  switchToDialog: PropTypes.func.isRequired
 }
