@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Login from "./layout/login";
 import Main from "./layout/main";
+import { AuthContext } from "./js/AuthContext";
 
 class App extends Component {
   state = { currentPage: "login" };
@@ -11,12 +12,30 @@ class App extends Component {
   };
 
   PAGES = {
-    login: <Login navigateTo={this.navigateTo}/>,
-    main: <Main navigateTo={this.navigateTo}/>,
+    login: <Login navigateTo={this.navigateTo} />,
+    main: <Main navigateTo={this.navigateTo} />,
   };
 
   render() {
-    return <>{this.PAGES[this.state.currentPage]}</>;
+    return (
+      <AuthContext.Provider
+        value={{
+          login: (email, password) => {
+            console.log("Context::login is called");
+            this.isLoggedIn = true;
+          },
+
+          logout: () => {
+            console.log("Context::logout is called");
+            this.isLoggedIn = false;
+          },
+
+          isLoggedIn: false,
+        }}
+      >
+        {this.PAGES[this.state.currentPage]}
+      </AuthContext.Provider>
+    );
   }
 }
 

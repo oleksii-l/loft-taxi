@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 import "../css/loginform.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export default function LoginForm(props) {
-  console.log(props)
+  console.log(props);
 
   return (
     <form className="login-form">
       <h1>Войти</h1>
       <div>Новый пользователь?</div>
-      <a href="#" onClick={() => props.switchToDialog("registration")}>Зарегистрируйтесь</a>
+      <a href="/" onClick={() => props.switchToDialog("registration")}>
+        Зарегистрируйтесь
+      </a>
       <label>
         <div>Имя пользователя*</div>
         <input type="text" />
@@ -21,7 +23,10 @@ export default function LoginForm(props) {
       <input
         type="submit"
         value="Войти"
-        onClick={() => props.navigateTo("main")}
+        onClick={() => {
+          this.props.login();
+          props.navigateTo("main");
+        }}
       />
     </form>
   );
@@ -29,5 +34,5 @@ export default function LoginForm(props) {
 
 LoginForm.propTypes = {
   navigateTo: PropTypes.func.isRequired,
-  switchToDialog: PropTypes.func.isRequired
-}
+  switchToDialog: PropTypes.func.isRequired,
+};

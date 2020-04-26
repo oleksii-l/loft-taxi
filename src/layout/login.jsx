@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "../css/login.css";
 import LoginForm from "../components/loginForm";
 import Registration from "../components/registration";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { AuthContext } from "../js/AuthContext";
 
 export default class Login extends Component {
   state = { currentPage: "login" };
@@ -12,16 +13,33 @@ export default class Login extends Component {
   };
 
   SECTIONS = {
-    login: <LoginForm navigateTo={this.props.navigateTo} switchToDialog={this.setSection} />,
-    registration: <Registration navigateTo={this.props.navigateTo} switchToDialog={this.setSection} />,
+    login: (
+      <LoginForm
+        navigateTo={this.props.navigateTo}
+        switchToDialog={this.setSection}
+      />
+    ),
+    registration: (
+      <Registration
+        navigateTo={this.props.navigateTo}
+        switchToDialog={this.setSection}
+      />
+    ),
   };
 
   render() {
     console.log(this.props);
-    return <div className='login'>{this.SECTIONS[this.state.currentPage]}</div>;
+    const Section = this.SECTIONS[this.state.currentPage];
+    return (
+      <AuthContext.Consumer>
+        {({ login }) => (
+          <div className="login">{<Section login={login} />}</div>
+        )}
+      </AuthContext.Consumer>
+    );
   }
 }
 
 LoginForm.propTypes = {
-  navigateTo: PropTypes.func
-}
+  navigateTo: PropTypes.func,
+};
