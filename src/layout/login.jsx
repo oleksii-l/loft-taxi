@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import { AuthContext } from "../js/AuthContext";
 
 export default class Login extends Component {
+  static contextType = AuthContext;
+
   state = { currentPage: "login" };
 
   setSection = (section) => {
@@ -17,6 +19,7 @@ export default class Login extends Component {
       <LoginForm
         navigateTo={this.props.navigateTo}
         switchToDialog={this.setSection}
+        login={this.context.login}
       />
     ),
     registration: (
@@ -28,18 +31,16 @@ export default class Login extends Component {
   };
 
   render() {
-    console.log(this.props);
     const Section = this.SECTIONS[this.state.currentPage];
     return (
-      <AuthContext.Consumer>
-        {({ login }) => (
-          <div className="login">{<Section login={login} />}</div>
-        )}
-      </AuthContext.Consumer>
+      <div className="login">
+        <Section />
+      </div>
     );
   }
 }
 
 LoginForm.propTypes = {
   navigateTo: PropTypes.func,
+  login: PropTypes.func,
 };

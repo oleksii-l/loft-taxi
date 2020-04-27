@@ -40,4 +40,5 @@ export default function Registration(props) {
 Registration.propTypes = {
   navigateTo: PropTypes.func.isRequired,
   switchToDialog: PropTypes.func.isRequired,
+  login: PropTypes.func
 };
