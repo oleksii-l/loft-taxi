@@ -32,11 +32,7 @@ export default class Login extends Component {
 
   render() {
     const Section = this.SECTIONS[this.state.currentPage];
-    return (
-      <div className="login">
-        <Section />
-      </div>
-    );
+    return <div data-testid='login' className="login">{Section}</div>;
   }
 }
 

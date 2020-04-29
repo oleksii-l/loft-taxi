@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import "../css/map.css";
 import mapboxgl from "mapbox-gl";
+import { AuthContext } from "../js/AuthContext";
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoib2xla3NpaS1sIiwiYSI6ImNrOWcxbHByZDBoMjEzbnFtanA5cXF4dDAifQ.Irs2VyQA206LVGQ0DyH8DA";
 
 export default class Map extends Component {
+  static contextType = AuthContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,16 +19,20 @@ export default class Map extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div ref={(el) => (this.mapContainer = el)} className="mapContainer">
-          <div className="mapCoord">
-            Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom:{" "}
-            {this.state.zoom}
+    if (this.context.isLoggedIn) {
+      return (
+        <div>
+          <div ref={(el) => (this.mapContainer = el)} className="mapContainer">
+            <div className="mapCoord">
+              Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom:{" "}
+              {this.state.zoom}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <div>you did not login</div>;
+    }
   }
 
   componentDidMount() {

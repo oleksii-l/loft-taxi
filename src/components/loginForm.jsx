@@ -24,7 +24,7 @@ export default function LoginForm(props) {
         type="submit"
         value="Войти"
         onClick={() => {
-          this.props.login();
+          props.login();
           props.navigateTo("main");
         }}
       />
