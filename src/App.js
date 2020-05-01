@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 import Login from "./layout/login";
 import Main from "./layout/main";
 import { AuthProvider } from "./js/AuthContext";
+import { theme } from "loft-taxi-mui-theme";
 
 class App extends Component {
   state = { currentPage: "login" };
@@ -19,7 +21,9 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
-        {this.PAGES[this.state.currentPage]}
+        <MuiThemeProvider theme={theme}>
+          {this.PAGES[this.state.currentPage]}
+        </MuiThemeProvider>
       </AuthProvider>
     );
   }

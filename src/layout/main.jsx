@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../css/main.css";
-import Header from "../components/header";
+import {Header} from "../components/header";
 import Map from "../components/map";
 import Profile from "../components/profile";
 import PropTypes from 'prop-types';

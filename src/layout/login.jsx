@@ -5,7 +5,7 @@ import Registration from "../components/registration";
 import PropTypes from "prop-types";
 import { AuthContext } from "../js/AuthContext";
 
-export default class Login extends Component {
+export default class  Login extends Component {
   static contextType = AuthContext;
 
   state = { currentPage: "login" };

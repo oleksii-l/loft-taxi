@@ -3,13 +3,12 @@ import "../css/loginform.css";
 import PropTypes from "prop-types";
 
 export default function LoginForm(props) {
-  console.log(props);
 
   return (
     <form className="login-form">
       <h1>Войти</h1>
       <div>Новый пользователь?</div>
-      <a href="/" onClick={() => props.switchToDialog("registration")}>
+      <a id='reg-btn' href="/" onClick={() => props.switchToDialog("registration")}>
         Зарегистрируйтесь
       </a>
       <label>
@@ -21,6 +20,7 @@ export default function LoginForm(props) {
         <input type="password" />
       </label>
       <input
+        data-testid = "reg-btn"
         type="submit"
         value="Войти"
         onClick={() => {

@@ -3,10 +3,9 @@ import "../css/registration.css";
 import PropTypes from "prop-types";
 
 export default function Registration(props) {
-  console.log(props);
 
   return (
-    <form className="login-form">
+    <form data-testid = "registrationForm" className="login-form">
       <h1>Регистрация</h1>
       <div>Уже зарегистрированы?</div>
       <a href="#" onClick={() => props.switchToDialog("login")}>
