@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
 import "../css/registration.css";
+import PropTypes from "prop-types";
 
-export default function Registration(props) {    
-  console.log(props)
-
+export default function Registration(props) {
   return (
-    <form className="login-form">
+    <form data-testid="registrationForm" className="login-form">
       <h1>Регистрация</h1>
       <div>Уже зарегистрированы?</div>
-      <a href="#" onClick={() => props.switchToDialog("login")}>Войти</a>
+      <a href="#" onClick={() => props.switchToDialog("login")}>
+        Войти
+      </a>
       <label>
         <div>Адрес электронной почты*</div>
         <input type="text" />
@@ -28,8 +29,17 @@ export default function Registration(props) {
       <input
         type="submit"
         value="Войти"
-        onClick={() => props.navigateTo("main")}
+        onClick={() => {
+          props.login();
+          props.navigateTo("main");
+        }}
       />
     </form>
   );
 }
+
+Registration.propTypes = {
+  navigateTo: PropTypes.func.isRequired,
+  switchToDialog: PropTypes.func.isRequired,
+  login: PropTypes.func,
+};
