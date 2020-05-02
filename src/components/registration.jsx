@@ -3,9 +3,8 @@ import "../css/registration.css";
 import PropTypes from "prop-types";
 
 export default function Registration(props) {
-
   return (
-    <form data-testid = "registrationForm" className="login-form">
+    <form data-testid="registrationForm" className="login-form">
       <h1>Регистрация</h1>
       <div>Уже зарегистрированы?</div>
       <a href="#" onClick={() => props.switchToDialog("login")}>
@@ -30,7 +29,10 @@ export default function Registration(props) {
       <input
         type="submit"
         value="Войти"
-        onClick={() => props.navigateTo("main")}
+        onClick={() => {
+          props.login();
+          props.navigateTo("main");
+        }}
       />
     </form>
   );
@@ -39,5 +41,5 @@ export default function Registration(props) {
 Registration.propTypes = {
   navigateTo: PropTypes.func.isRequired,
   switchToDialog: PropTypes.func.isRequired,
-  login: PropTypes.func
+  login: PropTypes.func,
 };

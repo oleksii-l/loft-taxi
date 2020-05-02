@@ -8,7 +8,7 @@ export default function LoginForm(props) {
     <form className="login-form">
       <h1>Войти</h1>
       <div>Новый пользователь?</div>
-      <a id='reg-btn' href="/" onClick={() => props.switchToDialog("registration")}>
+      <a id='reg-btn' href="#" onClick={() => props.switchToDialog("registration")}>
         Зарегистрируйтесь
       </a>
       <label>

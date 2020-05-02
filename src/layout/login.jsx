@@ -26,6 +26,7 @@ export default class  Login extends Component {
       <Registration
         navigateTo={this.props.navigateTo}
         switchToDialog={this.setSection}
+        login={this.context.login}
       />
     ),
   };
