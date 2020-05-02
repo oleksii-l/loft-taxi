@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import "../css/header.css";
 import PropTypes from "prop-types";
+import { Link as RouterLink, withRouter } from "react-router-dom";
+
 import { AuthContext } from "../js/AuthContext";
 
 import { Logo } from "loft-taxi-mui-theme";
@@ -19,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Header = (props) => {
+export const Header = withRouter(props => {
   const classes = useStyles();
   const context = useContext(AuthContext);
 
@@ -47,7 +49,7 @@ export const Header = (props) => {
       </Toolbar>
     </AppBar>
   );
-};
+});
 
 Header.propTypes = {
   navigateTo: PropTypes.func.isRequired,

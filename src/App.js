@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
+
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 import Login from "./layout/login";
@@ -22,7 +24,7 @@ class App extends Component {
     return (
       <AuthProvider>
         <MuiThemeProvider theme={theme}>
-          {this.PAGES[this.state.currentPage]}
+          <BrowserRouter>{this.PAGES[this.state.currentPage]}</BrowserRouter>
         </MuiThemeProvider>
       </AuthProvider>
     );

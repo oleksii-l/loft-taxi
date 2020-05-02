@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+
 import "../css/login.css";
 import LoginForm from "../components/loginForm";
 import Registration from "../components/registration";
 import PropTypes from "prop-types";
 import { AuthContext } from "../js/AuthContext";
 
-export default class  Login extends Component {
+export default class Login extends Component {
   static contextType = AuthContext;
 
   state = { currentPage: "login" };
@@ -32,8 +34,14 @@ export default class  Login extends Component {
   };
 
   render() {
-    const Section = this.SECTIONS[this.state.currentPage];
-    return <div data-testid='login' className="login">{Section}</div>;
+    return (
+      <div data-testid="login" className="login">
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/resistration" component={Registration} />
+        </Switch>
+      </div>
+    );
   }
 }
 
